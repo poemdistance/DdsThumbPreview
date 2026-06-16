@@ -349,12 +349,11 @@ Public Class InstallerForm
         Dim shelExtDll = New XmhShellExtensionsDescription()
 
 
-        ' 先删除目标dll
+        ' 先删除目标dll, 防止安装时文件还被系统占用导致安装失败
         DeleteShellExtensionsDllsFromTarget()
 
-
         '' 1. copy the extensions dll
-        Log("Installation: Copying files")
+        Log("Installation: Copying files (CopyShellExtensionsDllsToTarget)")
         CopyShellExtensionsDllsToTarget()
         ' 2. create the registry keys
         Log("Installation: creating registry entries")
