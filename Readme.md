@@ -19,90 +19,70 @@
 该软件只在我的Win10上测试, Win11能否正常运行未知.
 
 ---
-# 以下为原作者的Readme内容# Xmh Tools
-A tools suite for image processing.  
 
-Project hosted at: https://github.com/xMadHack/ImageWarp  
-For more information of the project and the tools, visit the wiki: https://github.com/xMadHack/ImageWarp/wiki  
+# 以下为原作者的Readme内容 (翻译并去除了部分内容)
 
-Included features: 
-- Enables generation of **DDS files thumbnails** in window explorer (including compressed formats)
-- **Context Menu** with shortcuts for DDS and PNG files functionalities.
-- **TexPatcher**: a Tool to quickly apply patches to texture files. (Mosly useful to patch body seams in textures like Skyrim, when having unmatching body and head textures.)
-- **LiteView**: A light-weight image viewer supporting DDS file formats.
+一个用于图像处理的工具套件。
 
-**Only Windows x64 operative systems are supported**  
-**Requires .Net 6.0 and .NetFramework 4.7.2**  
+包含的功能特色：
+- 支持在 Windows 资源管理器中生成 **DDS 文件缩略图**（包括压缩格式）。
+- 针对 DDS 和 PNG 文件功能的**右键菜单**快捷方式。
+- **TexPatcher**：一款用于快速对纹理文件应用补丁的工具。（主要用于修补像《天际/上古卷轴5》这类游戏中的纹理身体接缝，解决身体和头部纹理不匹配的问题。）
+- **LiteView**：一款支持 DDS 文件格式的轻量级图像查看器。
 
-**Tested in:**  
-- Windows 10 x64
+**仅支持 Windows x64 操作系统** **需要安装 .Net 6.0 和 .NetFramework 4.7.2** **测试环境：** - Windows 10 x64
 
-***Textures not included.***  
-They have to be downloaded externally.
+***不包含纹理文件。*** 纹理需要从外部自行下载。
 
-## Contribute!
+## 用户使用说明
 
-With a pull request: https://github.com/xMadHack/ImageWarp  
-Be a Patreon: https://www.patreon.com/xMadHack  
-Donate to the effort: https://paypal.me/xMadHack  
+### 安装步骤
+通常情况下，安装说明会列在托管二进制文件链接的网站上。  
+以下列出的是通用使用方法。
 
-## Instructions For Users
-
-### Legitimate Download Sites
-
-Do no accept binaries from sites that are not listed here.   
-Legitimate:  
-- Official Mod in NexusMods. https://www.nexusmods.com/skyrimspecialedition/mods/60852
-- Releases of  https://github.com/xMadHack/ImageWarp/releases
-
-### Installation
-Normally, the installation instruction are listed in the site that hosted the link to the binaries.  
-Here is listed the general usage.  
-
-First, install the required runtimes (both of them):
+首先，请安装所需的运行时环境（两者都需要安装）：
 
 https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.1-windows-x64-installer
 
 https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net472-web-installer
 
-1. The binaries of Xmh Tools should come packaged in a zip file. 
-1. Extract the files to the target application path (Where you want the application to be installed).
-1. To enable Shell Extensions (DDS thumbnails in windows explorer, and image context menu), execute the file
-"XmhShellExtensionsInstaller.exe" and follow instructions.
+1. Xmh Tools 的二进制文件应该打包在一个 zip 压缩包中。
+1. 将文件解压到目标应用程序路径（即你希望安装该软件的位置）。
+1. 如需启用外壳扩展（Windows 资源管理器中的 DDS 缩略图以及图像右键菜单），请运行 "XmhShellExtensionsInstaller.exe" 文件并按照提示操作。
 
-## For Developers
-The solution is currently tested only with Visual Studio 2022 Comunity Edition.
+## 开发者说明
+该解决方案目前仅在 Visual Studio 2022 社区版（Community Edition）下进行了测试。
 
-### Building Instrutions
-1. Get the source code.
-2. Open it in VisualStudio 2022.
-3. Build Debug x64 or Release x64.
+### 编译构建说明
+1. 获取源代码。
+1. 在 Visual Studio 2022 中打开它。
+1. 编译为 Debug x64 或 Release x64 版本。
 
-All the required libraries should be downloaded automatically by NuGet.
+所有需要的依赖库应该都会通过 NuGet 自动下载。
 
-### Creating outputs
+### 生成输出文件
 
-Use the Publish feature (right click a project, and select Publish...) to create the outputs for:
+使用“发布”（Publish）功能（右键点击项目，然后选择“发布...”）来为以下项目创建输出：
 
 - TexPatcher
 - ImgConvertCmd
 - XmhShellExtensionsInstaller
 
-The next projects can't be used with the Publish tool, and the outputs must be copied manually.  
+以下项目无法使用“发布”工具，必须手动复制其输出文件：
 
 - LiteView
 
-## License
-- **ImageWarp** (AKA [Xmh] Tools)  
-This is the current repository and the produced tools.
-The solution (as in Visual Studio Solution, including all its projects) license is: GNU GPL license v3. 
+## 许可证
+- **ImageWarp**（又名 [Xmh] Tools）  
+即当前的仓库以及所生成的工具。
+本解决方案（指 Visual Studio 解决方案，包括其旗下的所有项目）采用的许可证为：GNU GPL v3 许可证。  
 https://www.gnu.org/licenses/gpl-3.0.txt
 
-### External Libraries.
-**Emgu CV**
-Installed through NuGet when building.  
-https://www.emgu.com/ 
-Licence (GNU GPL license v3) copied in the Licenses folder.  
+### 外部依赖库
+**Emgu CV** 在编译构建时通过 NuGet 安装。  
+https://www.emgu.com/  
+其许可证（GNU GPL v3 许可证）副本已存放在 Licenses 文件夹中。  
 
-**SharpShell** (MIT license)
-**OpenTK** (MIT license)
+**SharpShell**（MIT 许可证）  
+**OpenTK**（MIT 许可证）
+
