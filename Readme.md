@@ -20,7 +20,9 @@
 
 ---
 
-# 以下为原作者的Readme内容 (翻译并去除了部分内容)
+# 以下为原作者的Readme内容 (翻译并去除了部分内容)  
+
+原作者仓库: https://github.com/xMadHack/ImageWarp
 
 一个用于图像处理的工具套件。
 
