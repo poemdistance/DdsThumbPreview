@@ -108,7 +108,12 @@ def reconstruct_from_reverse_map():
 
         # 找到了可用文件
         available_paths = current_files_map[basename]
+
         chosen_source_file = available_paths[0]
+        for f in available_paths:
+            if 'Release' in f:
+                chosen_source_file = f
+                break
 
         # 把这个文件复制到所有它应该去的相对路径里
         for rel_path in rel_paths:
