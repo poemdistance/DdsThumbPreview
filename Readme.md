@@ -1,4 +1,25 @@
-# Xmh Tools
+# Windows 10 文件夹内 DDS 缩略图预览
+## 背景 
+作者使用了SageThumbs和MysticThumbs等等软件, 个个都异常没法预览, MysticThumbs一开始安装时预览成功了, 但是过了不久就出现故障, 卸载重装多次都无法再正常工作, 而且好像要收费？
+实在是非常费解, 这么简单的一个DDS贴图预览功能, 怎么没几个能正确处理的。  
+
+后面找到这个开源软件, 试了下安装很快, 装上就能用, 鬼使神差地打开看了一下源码, 发现它竟然是在windows请求预览的缩略图时, 复制一份文件到它的工作目录, 使用texconv.exe处理后生成缩略图再传回给请求方   
+
+速度慢不说, 还伤硬盘. 而texconv.exe是微软DirectXTex(C++)项目里的一个程序, 刚好它也开源, 所以把它的源码也clone下来, 并将依赖的部分代码一并迁移到本项目, 然后修改了原作者的dds缩略图生成逻辑, 桥接到DirectXTex的缩略图生成代码(本项目是 C# + VB 写的， 故需要桥接), 并修改这部分代码让它从内存中加载dds数据, 处理完后再把缩略图写回内存交还给Windows文件夹展示.
+
+## 使用  
+下载发布的压缩包, 解压后运行里面的XmhShellExtensionsInstaller.exe, 根据界面提示安装就行, 注意解压后的文件夹跟程序运行有关故不能删除, 移动位置后需要进行重装.  
+安装完成后如果没有意外就能正常预览贴图了, 如果安装异常, 请打开解压文件夹内的InstallerLog.txt自行排查或贴上来提issue.
+
+## 问题排查  
+如果预览时遇到问题, 请打开解压文件夹内的config/config.json(会在预览调用后被自动创建), 将里面的log字段设置成true,
+之后再去尝试预览dds文件并生成日志, 日志文件在解压文件夹内的log目录下, 如果你会编程, 可以自己根据错误提示去修改源码调试, 调试源码需要使用Vistual Studio 2022. 如果不会, 请携带你上你的log日志以及出错的dds文件提issue.
+
+## 注意  
+该软件只在我的Win10上测试, Win11能否正常运行未知.
+
+---
+# 以下为原作者的Readme内容# Xmh Tools
 A tools suite for image processing.  
 
 Project hosted at: https://github.com/xMadHack/ImageWarp  
