@@ -12,5 +12,7 @@
 **.csproj.user
 **.pubxml.user
 **/**.pubxml.user
+**/Bin
+Release
 .vs
 .editorconfig

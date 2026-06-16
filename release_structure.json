@@ -1,0 +1,140 @@
+{
+    "concrt140.dll": [
+        "concrt140.dll"
+    ],
+    "cvextern.dll": [
+        "cvextern.dll"
+    ],
+    "Emgu.CV.Bitmap.dll": [
+        "Emgu.CV.Bitmap.dll"
+    ],
+    "Emgu.CV.Platform.NetStandard.dll": [
+        "Emgu.CV.Platform.NetStandard.dll"
+    ],
+    "handle.exe": [
+        "handle.exe"
+    ],
+    "handle64.exe": [
+        "handle64.exe"
+    ],
+    "handle64a.exe": [
+        "handle64a.exe"
+    ],
+    "ImgConvertCmd.deps.json": [
+        "ImgConvertCmd.deps.json"
+    ],
+    "ImgConvertCmd.dll": [
+        "ImgConvertCmd.dll"
+    ],
+    "ImgConvertCmd.exe": [
+        "ImgConvertCmd.exe"
+    ],
+    "ImgConvertCmd.runtimeconfig.json": [
+        "ImgConvertCmd.runtimeconfig.json"
+    ],
+    "License.md": [
+        "License.md"
+    ],
+    "LiteView.dll": [
+        "LiteView.dll"
+    ],
+    "LiteView.exe": [
+        "LiteView.exe"
+    ],
+    "LiteView.exe.config": [
+        "LiteView.exe.config"
+    ],
+    "Microsoft.Win32.SystemEvents.dll": [
+        "Microsoft.Win32.SystemEvents.dll"
+    ],
+    "msvcp140.dll": [
+        "msvcp140.dll"
+    ],
+    "msvcp140_1.dll": [
+        "msvcp140_1.dll"
+    ],
+    "msvcp140_2.dll": [
+        "msvcp140_2.dll"
+    ],
+    "msvcp140_atomic_wait.dll": [
+        "msvcp140_atomic_wait.dll"
+    ],
+    "msvcp140_codecvt_ids.dll": [
+        "msvcp140_codecvt_ids.dll"
+    ],
+    "opencv_videoio_ffmpeg454_64.dll": [
+        "opencv_videoio_ffmpeg454_64.dll"
+    ],
+    "OpenTK.dll": [
+        "OpenTK.dll"
+    ],
+    "OpenTK.GLControl.dll": [
+        "OpenTK.GLControl.dll"
+    ],
+    "Readme.md": [
+        "Readme.md"
+    ],
+    "reg.bat": [
+        "reg.bat"
+    ],
+    "SharpShell.dll": [
+        "SharpShell.dll"
+    ],
+    "System.Drawing.Common.dll": [
+        "System.Drawing.Common.dll"
+    ],
+    "TexMemWrapper.dll": [
+        "TexMemWrapper.dll"
+    ],
+    "TexPatcher.deps.json": [
+        "TexPatcher.deps.json"
+    ],
+    "TexPatcher.dll": [
+        "TexPatcher.dll"
+    ],
+    "TexPatcher.dll.config": [
+        "TexPatcher.dll.config"
+    ],
+    "TexPatcher.exe": [
+        "TexPatcher.exe"
+    ],
+    "TexPatcher.runtimeconfig.json": [
+        "TexPatcher.runtimeconfig.json"
+    ],
+    "unreg.bat": [
+        "unreg.bat"
+    ],
+    "vcruntime140.dll": [
+        "vcruntime140.dll"
+    ],
+    "vcruntime140_1.dll": [
+        "vcruntime140_1.dll"
+    ],
+    "WarpLib.dll": [
+        "WarpLib.dll"
+    ],
+    "XmhRegHelper.dll": [
+        "XmhRegHelper.dll"
+    ],
+    "XmhShellExtensions.dll": [
+        "XmhShellExtensions.dll"
+    ],
+    "XmhShellExtensionsInstaller.deps.json": [
+        "XmhShellExtensionsInstaller.deps.json"
+    ],
+    "XmhShellExtensionsInstaller.dll": [
+        "XmhShellExtensionsInstaller.dll"
+    ],
+    "XmhShellExtensionsInstaller.exe": [
+        "XmhShellExtensionsInstaller.exe"
+    ],
+    "XmhShellExtensionsInstaller.runtimeconfig.json": [
+        "XmhShellExtensionsInstaller.runtimeconfig.json"
+    ],
+    "DoNotDelete.txt": [
+        "Thumbnails/DoNotDelete.txt"
+    ],
+    "texconv.exe": [
+        "Utils/texconv.exe"
+    ]
+}

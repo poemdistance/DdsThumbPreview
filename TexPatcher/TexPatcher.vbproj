@@ -20,6 +20,7 @@
     <PackageProjectUrl>https://github.com/xMadHack/ImageWarp</PackageProjectUrl>
     <PackageLicenseFile>License.md</PackageLicenseFile>
     <RepositoryUrl>https://github.com/xMadHack/ImageWarp</RepositoryUrl>
+    <PackageOutputPath>..\SharedBin\$(Configuration)\</PackageOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

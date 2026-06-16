@@ -17,6 +17,7 @@
     <PackageLicenseFile>License.md</PackageLicenseFile>
     <RepositoryUrl>https://github.com/xMadHack/ImageWarp</RepositoryUrl>
     <PackageProjectUrl>https://github.com/xMadHack/ImageWarp</PackageProjectUrl>
+    <PackageOutputPath>..\SharedBin\$(Configuration)\</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

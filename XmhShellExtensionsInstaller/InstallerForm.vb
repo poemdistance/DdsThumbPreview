@@ -6,6 +6,14 @@ Imports XMadHackRegistry
 
 Public Class InstallerForm
 
+    ' 在类的顶部引入 API
+    Private Declare Function MoveFileEx Lib "kernel32" Alias "MoveFileExA" (
+    ByVal lpExistingFileName As String,
+    ByVal lpNewFileName As String,
+    ByVal dwFlags As Long) As Boolean
+
+    Private Const MOVEFILE_DELAY_UNTIL_REBOOT As Long = &H4
+
     Private Shared Sub Log(ByVal s As String)
         File.AppendAllText("InstallerLog.txt", DateTime.Now.ToString("HH:mm:ss:fff") + " > " + s + ControlChars.NewLine)
     End Sub
@@ -53,7 +61,10 @@ Public Class InstallerForm
     Private Shared NameOfTargetShellExtensionsFolder As String = "XmhShellExtensions"
     Private Shared FilenameOfShellExtensionsDll As String = $"XmhShellExtensions.d{"ll"}"
     Private Shared FilenameOfSharpShellDll As String = $"SharpShell.dll"
-    Private Shared FilenameOfXMadHackRegistryDll As String = $"XMadHackRegistry.d{"ll"}"
+    Private Shared FilenameOfTextureMemConver As String = $"TexMemWrapper.dll"
+    'Private Shared FilenameOfXMadHackRegistryDll As String = $"XMadHackRegistry.d{"ll"}"
+    Private Shared FilenameOfXMadHackRegistryDll As String = $"XmhRegHelper.d{"ll"}"
+
 
     Private Shared Function CurrentFolder() As String
         Return IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)
@@ -64,6 +75,14 @@ Public Class InstallerForm
             Return IO.Path.Combine(CurrentFolder(), FilenameOfSharpShellDll)
         End Get
     End Property
+
+    ' todo: 目录位置不对，看其它dll好像都是编译后有脚本把他们复制到了上很多层级目录里 
+    Private Shared ReadOnly Property SourceTexMemWrapperDllFullPath As String
+        Get
+            Return IO.Path.Combine(CurrentFolder(), FilenameOfTextureMemConver)
+        End Get
+    End Property
+
 
     Private Shared ReadOnly Property SourceShellExtensionsDllFullPath As String
         Get
@@ -112,6 +131,15 @@ Public Class InstallerForm
         End Get
     End Property
 
+    ' todo 目录设置的不对，后续要修改，看怎么修改
+    Private Shared ReadOnly Property TargetTexMemWrapperDllFullPath As String
+        Get
+            Return IO.Path.Combine(TargetShellExtensionsDirectory, FilenameOfTextureMemConver)
+        End Get
+    End Property
+
+
+
     Private Shared ReadOnly Property TargetXMadHackRegistryDllFullPath As String
         Get
             Return IO.Path.Combine(TargetShellExtensionsDirectory, FilenameOfXMadHackRegistryDll)
@@ -135,42 +163,111 @@ Public Class InstallerForm
     End Function
 
     Private Shared Sub CopyShellExtensionsDllsToTarget()
+        ' === 1. 检查并创建目标文件夹 ===
         If (Not IO.Directory.Exists(TargetShellExtensionsDirectory)) Then
-            IO.Directory.CreateDirectory(TargetShellExtensionsDirectory)
-            Log("Directory Created: " + TargetShellExtensionsDirectory)
-
+            Try
+                IO.Directory.CreateDirectory(TargetShellExtensionsDirectory)
+                Log("Directory Created: " + TargetShellExtensionsDirectory)
+            Catch ex As Exception
+                Log($"[ERROR] Failed to create directory '{TargetShellExtensionsDirectory}'. Reason: {ex.Message}")
+                Throw
+            End Try
         End If
-        If Not IO.File.Exists(SourceShellExtensionsDllFullPath) Then
-            'MessageBox.Show("ERROR: Could not find " + SourceShellExtensionsDllFullPath + ". Aborting installation.")
-            Log("File Not Found: " + SourceShellExtensionsDllFullPath)
 
+        ' === 2. 严格检查所有源文件是否存在 ===
+        Log("Starting source files existence check...")
+
+        If Not IO.File.Exists(SourceShellExtensionsDllFullPath) Then
+            Log("[ERROR] File Not Found: " + SourceShellExtensionsDllFullPath)
             Throw New IO.FileNotFoundException(SourceShellExtensionsDllFullPath)
         End If
+
         If Not IO.File.Exists(SourceSharpShellDllFullPath) Then
-            'MessageBox.Show("ERROR: Could not find " + SourceSharpShellDllFullPath + ". Aborting installation.")
-            Log("File Not Found: " + SourceSharpShellDllFullPath)
+            Log("[ERROR] File Not Found: " + SourceSharpShellDllFullPath)
             Throw New IO.FileNotFoundException(SourceSharpShellDllFullPath)
-
         End If
+
         If Not IO.File.Exists(SourceXMadHackDllFullPath) Then
-            'MessageBox.Show("ERROR: Could not find " + SourceSharpShellDllFullPath + ". Aborting installation.")
-            Log("File Not Found: " + SourceXMadHackDllFullPath)
+            Log("[ERROR] File Not Found: " + SourceXMadHackDllFullPath)
             Throw New IO.FileNotFoundException(SourceXMadHackDllFullPath)
-
         End If
 
-        IO.File.Copy(SourceShellExtensionsDllFullPath, TargetShellExtensionsDllFullPath, True)
-        Log($"Copied x > y: {SourceShellExtensionsDllFullPath} > {TargetShellExtensionsDllFullPath}")
+        ' 针对新增的 TexMemWrapper 补充源文件检查，防止复制时才报错
+        If Not IO.File.Exists(SourceTexMemWrapperDllFullPath) Then
+            Log("[ERROR] File Not Found: " + SourceTexMemWrapperDllFullPath)
+            Throw New IO.FileNotFoundException(SourceTexMemWrapperDllFullPath)
+        End If
 
-        IO.File.Copy(SourceSharpShellDllFullPath, TargetSharpShellDllFullPath, True)
-        Log($"Copied x > y: {SourceSharpShellDllFullPath} > {TargetSharpShellDllFullPath}")
-        IO.File.Copy(SourceXMadHackDllFullPath, TargetXMadHackRegistryDllFullPath, True)
-        Log($"Copied x > y: {SourceXMadHackDllFullPath} > {TargetXMadHackRegistryDllFullPath}")
+        If Not IO.File.Exists(SourceRegBatFullPath) Then
+            Log("[ERROR] File Not Found: " + SourceRegBatFullPath)
+            Throw New IO.FileNotFoundException(SourceRegBatFullPath)
+        End If
 
-        IO.File.Copy(SourceRegBatFullPath, TargetRegBatFullPath, True)
+        If Not IO.File.Exists(SourceUnregBatFullPath) Then
+            Log("[ERROR] File Not Found: " + SourceUnregBatFullPath)
+            Throw New IO.FileNotFoundException(SourceUnregBatFullPath)
+        End If
 
-        IO.File.Copy(SourceUnregBatFullPath, TargetUnregBatFullPath, True)
+        Log("All source files verified. Starting file copy operations...")
 
+        ' === 3. 开始执行复制操作 (带异常捕获) ===
+        Try
+            ' 复制 ShellExtensions.dll
+            Log($"Attempting to copy: {SourceShellExtensionsDllFullPath} -> {TargetShellExtensionsDllFullPath}")
+            IO.File.Copy(SourceShellExtensionsDllFullPath, TargetShellExtensionsDllFullPath, True)
+            Log($"[SUCCESS] Copied: {SourceShellExtensionsDllFullPath} > {TargetShellExtensionsDllFullPath}")
+
+            ' 复制 SharpShell.dll
+            Log($"Attempting to copy: {SourceSharpShellDllFullPath} -> {TargetSharpShellDllFullPath}")
+            IO.File.Copy(SourceSharpShellDllFullPath, TargetSharpShellDllFullPath, True)
+            Log($"[SUCCESS] Copied: {SourceSharpShellDllFullPath} > {TargetSharpShellDllFullPath}")
+
+            ' 复制 XMadHack.dll
+            Log($"Attempting to copy: {SourceXMadHackDllFullPath} -> {TargetXMadHackRegistryDllFullPath}")
+            IO.File.Copy(SourceXMadHackDllFullPath, TargetXMadHackRegistryDllFullPath, True)
+            Log($"[SUCCESS] Copied: {SourceXMadHackDllFullPath} > {TargetXMadHackRegistryDllFullPath}")
+
+            ' 【新增】复制 TexMemWrapper.dll
+            Log($"Attempting to copy: {SourceTexMemWrapperDllFullPath} -> {TargetTexMemWrapperDllFullPath}")
+            IO.File.Copy(SourceTexMemWrapperDllFullPath, TargetTexMemWrapperDllFullPath, True)
+            Log($"[SUCCESS] Copied: {SourceTexMemWrapperDllFullPath} > {TargetTexMemWrapperDllFullPath}")
+
+            ' 复制 注册批处理
+            Log($"Attempting to copy: {SourceRegBatFullPath} -> {TargetRegBatFullPath}")
+            IO.File.Copy(SourceRegBatFullPath, TargetRegBatFullPath, True)
+            Log($"[SUCCESS] Copied: {SourceRegBatFullPath} > {TargetRegBatFullPath}")
+
+            ' 复制 卸载批处理
+            Log($"Attempting to copy: {SourceUnregBatFullPath} -> {TargetUnregBatFullPath}")
+            IO.File.Copy(SourceUnregBatFullPath, TargetUnregBatFullPath, True)
+            Log($"[SUCCESS] Copied: {SourceUnregBatFullPath} > {TargetUnregBatFullPath}")
+
+            Log("All files copied successfully without errors.")
+
+        Catch ex As IO.IOException
+            ' 通常是文件被系统占用、或正在被另一个进程使用（比如旧的 Shell 扩展还没卸载干净）
+            ' Log($"[CRITICAL ERROR] IOException during copy. File might be locked/in use. Details: {ex.Message}")
+            ' === 当 Copy 遇到 IOException 时，在 Catch 块里这样处理 ===
+            Log($"[INFO] File is locked. Registering {SourceShellExtensionsDllFullPath} for delayed replace on reboot...")
+
+            ' 告知系统，下次重启时把源文件覆盖到目标文件
+            Dim success As Boolean = MoveFileEx(SourceShellExtensionsDllFullPath, TargetShellExtensionsDllFullPath, MOVEFILE_DELAY_UNTIL_REBOOT)
+
+            If success Then
+                Log("[SUCCESS] File marked for replacement on next reboot. Please restart the PC.")
+            Else
+                Log("[ERROR] MoveFileEx failed to register file for reboot replacement.")
+                Throw
+            End If
+        Catch ex As UnauthorizedAccessException
+            ' 权限不足，没有系统目录的写入权限
+            Log($"[CRITICAL ERROR] UnauthorizedAccessException. Please run as Administrator. Details: {ex.Message}")
+            Throw
+        Catch ex As Exception
+            ' 其他未知错误
+            Log($"[CRITICAL ERROR] Unexpected error during copy operations. Details: {ex.Message}")
+            Throw
+        End Try
     End Sub
 
     Private Shared Sub DeleteShellExtensionsDllsFromTarget()
@@ -250,6 +347,10 @@ Public Class InstallerForm
         Dim imgConvertCmdApp = New ImgConvertCmdDescription()
         Dim liteViewApp = New LiteViewDescription()
         Dim shelExtDll = New XmhShellExtensionsDescription()
+
+
+        ' 先删除目标dll
+        DeleteShellExtensionsDllsFromTarget()
 
 
         '' 1. copy the extensions dll
@@ -347,4 +448,23 @@ Public Class InstallerForm
         End If
     End Sub
 
+    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
+
+    End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
+    Private Sub rbInstallThumbnails_CheckedChanged(sender As Object, e As EventArgs) Handles rbInstallThumbnails.CheckedChanged
+
+    End Sub
+
+    Private Sub rbInstallAll_CheckedChanged(sender As Object, e As EventArgs) Handles rbInstallAll.CheckedChanged
+
+    End Sub
+
+    Private Sub rbInstallContextMenu_CheckedChanged(sender As Object, e As EventArgs) Handles rbInstallContextMenu.CheckedChanged
+
+    End Sub
 End Class

@@ -10,7 +10,7 @@
     <RootNamespace>XmhShellExtensions</RootNamespace>
     <AssemblyName>XmhShellExtensions</AssemblyName>
     <!--<TargetFramework>net6.0-windows</TargetFramework>-->
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -44,6 +44,9 @@
     <RegisterForComInterop>false</RegisterForComInterop>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="SharpShell, Version=2.7.2.0, Culture=neutral, PublicKeyToken=f14dc899472fe6fb, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpShell.2.7.2\lib\net40-client\SharpShell.dll</HintPath>
@@ -51,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -79,6 +83,7 @@
     <Compile Include="PngFilesExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegHelper.cs" />
+    <Compile Include="TexMemWrapperNative.cs" />
     <Compile Include="XmhTextureMenuBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +104,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)XmhShellExtensions.dll" "$(SolutionDir)XmhShellExtensionsInstaller"
-copy "$(TargetDir)SharpShell.dll" "$(SolutionDir)XmhShellExtensionsInstaller"</PostBuildEvent>
+copy "$(TargetDir)SharpShell.dll" "$(SolutionDir)XmhShellExtensionsInstaller"
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

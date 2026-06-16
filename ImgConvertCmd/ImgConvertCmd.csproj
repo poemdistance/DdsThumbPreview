@@ -22,6 +22,8 @@
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
     <StartupObject>Program</StartupObject>
     <PackageProjectUrl>https://github.com/xMadHack/ImageWarp</PackageProjectUrl>
+    <PackageOutputPath>..\SharedBin\$(Configuration)\</PackageOutputPath>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

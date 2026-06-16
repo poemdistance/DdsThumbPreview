@@ -1,0 +1,3 @@
+LIBRARY TexMemWrapper
+EXPORTS
+  ConvertMemoryDDsToPng
