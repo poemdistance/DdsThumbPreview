@@ -79,7 +79,7 @@
         End Get
     End Property
 
-    Private Sub ImagePatcher_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+    Private Sub ImagePatcher_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Dim args = My.Application.CommandLineArgs
         If args.Count = 1 Then
             Dim inFile = args(0)
@@ -129,20 +129,19 @@
     End Sub
 
     Private Sub ContributeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContributeToolStripMenuItem.Click
-        Process.Start("explorer", "https://github.com/xMadHack")
+        Process.Start("explorer", "/github.com/poemdistance")
     End Sub
 
     Private Sub PaypalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PaypalToolStripMenuItem.Click
         Process.Start("explorer", "https://paypal.me/xMadHack")
     End Sub
 
-    Private Sub AboutXMadHackToolsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutXMadHackToolsToolStripMenuItem.Click
-        Dim about = New AboutXMadHack()
-        about.ShowDialog(Me)
-    End Sub
-
     Private Sub AboutImagePatcherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutImagePatcherToolStripMenuItem.Click
         Dim about = New AboutTexPatcher()
         about.ShowDialog(Me)
+    End Sub
+
+    Private Sub SupportUsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SupportUsToolStripMenuItem.Click
+
     End Sub
 End Class

@@ -22,228 +22,209 @@ Partial Class TexPatcher
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.imfPatched = New TexPatcherTool.ImageFileControl()
-        Me.imfPatch = New TexPatcherTool.ImageFileControl()
-        Me.imfSource = New TexPatcherTool.ImageFileControl()
-        Me.bApplyPatches = New System.Windows.Forms.Button()
-        Me.chkCompressDds = New System.Windows.Forms.CheckBox()
-        Me.cbPatches = New System.Windows.Forms.ComboBox()
-        Me.chkCloseWhenFinished = New System.Windows.Forms.CheckBox()
-        Me.MenuBar = New System.Windows.Forms.MenuStrip()
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenCreatePatchToolToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutImagePatcherToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutXMadHackToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SupportUsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ContributeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PatreonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PaypalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.MenuBar.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'imfPatched
-        '
-        Me.imfPatched.FileFilter = "DDS and PNG Files|*.dds;*.png"
-        Me.imfPatched.ImageFile = "patched.png"
-        Me.imfPatched.ImageFileLabel = "Patched"
-        Me.imfPatched.IsOutput = True
-        Me.imfPatched.Location = New System.Drawing.Point(610, 48)
-        Me.imfPatched.Margin = New System.Windows.Forms.Padding(6)
-        Me.imfPatched.Name = "imfPatched"
-        Me.imfPatched.Size = New System.Drawing.Size(292, 262)
-        Me.imfPatched.TabIndex = 4
-        '
-        'imfPatch
-        '
-        Me.imfPatch.FileFilter = "PNG Files|*.png"
-        Me.imfPatch.ImageFile = ""
-        Me.imfPatch.ImageFileLabel = "Patch"
-        Me.imfPatch.IsOutput = False
-        Me.imfPatch.Location = New System.Drawing.Point(309, 48)
-        Me.imfPatch.Margin = New System.Windows.Forms.Padding(6)
-        Me.imfPatch.Name = "imfPatch"
-        Me.imfPatch.Size = New System.Drawing.Size(292, 219)
-        Me.imfPatch.TabIndex = 2
-        '
-        'imfSource
-        '
-        Me.imfSource.FileFilter = "DDS and PNG Files|*.dds;*.png"
-        Me.imfSource.ImageFile = ""
-        Me.imfSource.ImageFileLabel = "Source"
-        Me.imfSource.IsOutput = False
-        Me.imfSource.Location = New System.Drawing.Point(8, 48)
-        Me.imfSource.Margin = New System.Windows.Forms.Padding(6)
-        Me.imfSource.Name = "imfSource"
-        Me.imfSource.Size = New System.Drawing.Size(292, 262)
-        Me.imfSource.TabIndex = 1
-        '
-        'bApplyPatches
-        '
-        Me.bApplyPatches.Location = New System.Drawing.Point(927, 208)
-        Me.bApplyPatches.Margin = New System.Windows.Forms.Padding(4)
-        Me.bApplyPatches.Name = "bApplyPatches"
-        Me.bApplyPatches.Size = New System.Drawing.Size(344, 58)
-        Me.bApplyPatches.TabIndex = 7
-        Me.bApplyPatches.Text = "Apply Patch"
-        Me.bApplyPatches.UseVisualStyleBackColor = True
-        '
-        'chkCompressDds
-        '
-        Me.chkCompressDds.AutoSize = True
-        Me.chkCompressDds.Checked = True
-        Me.chkCompressDds.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCompressDds.Location = New System.Drawing.Point(927, 110)
-        Me.chkCompressDds.Margin = New System.Windows.Forms.Padding(4)
-        Me.chkCompressDds.Name = "chkCompressDds"
-        Me.chkCompressDds.Size = New System.Drawing.Size(412, 34)
-        Me.chkCompressDds.TabIndex = 5
-        Me.chkCompressDds.Text = "Compress as BC7 (Only for .dds outputs)"
-        Me.chkCompressDds.UseVisualStyleBackColor = True
-        '
-        'cbPatches
-        '
-        Me.cbPatches.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbPatches.FormattingEnabled = True
-        Me.cbPatches.Location = New System.Drawing.Point(309, 276)
-        Me.cbPatches.Margin = New System.Windows.Forms.Padding(4)
-        Me.cbPatches.Name = "cbPatches"
-        Me.cbPatches.Size = New System.Drawing.Size(290, 38)
-        Me.cbPatches.TabIndex = 3
-        '
-        'chkCloseWhenFinished
-        '
-        Me.chkCloseWhenFinished.AutoSize = True
-        Me.chkCloseWhenFinished.Checked = True
-        Me.chkCloseWhenFinished.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCloseWhenFinished.Location = New System.Drawing.Point(927, 147)
-        Me.chkCloseWhenFinished.Margin = New System.Windows.Forms.Padding(4)
-        Me.chkCloseWhenFinished.Name = "chkCloseWhenFinished"
-        Me.chkCloseWhenFinished.Size = New System.Drawing.Size(232, 34)
-        Me.chkCloseWhenFinished.TabIndex = 6
-        Me.chkCloseWhenFinished.Text = "Close When Finished"
-        Me.chkCloseWhenFinished.UseVisualStyleBackColor = True
-        '
-        'MenuBar
-        '
-        Me.MenuBar.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.MenuBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.SupportUsToolStripMenuItem})
-        Me.MenuBar.Location = New System.Drawing.Point(0, 0)
-        Me.MenuBar.Name = "MenuBar"
-        Me.MenuBar.Padding = New System.Windows.Forms.Padding(9, 3, 0, 3)
-        Me.MenuBar.Size = New System.Drawing.Size(1347, 40)
-        Me.MenuBar.TabIndex = 15
-        Me.MenuBar.Text = "MenuStrip1"
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(62, 34)
-        Me.FileToolStripMenuItem.Text = "File"
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(164, 40)
-        Me.ExitToolStripMenuItem.Text = "Exit"
-        '
-        'ToolsToolStripMenuItem
-        '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenCreatePatchToolToolStripMenuItem})
-        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(78, 34)
-        Me.ToolsToolStripMenuItem.Text = "Tools"
-        '
-        'OpenCreatePatchToolToolStripMenuItem
-        '
-        Me.OpenCreatePatchToolToolStripMenuItem.Name = "OpenCreatePatchToolToolStripMenuItem"
-        Me.OpenCreatePatchToolToolStripMenuItem.Size = New System.Drawing.Size(343, 40)
-        Me.OpenCreatePatchToolToolStripMenuItem.Text = "Open CreatePatch Tool"
-        '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutImagePatcherToolStripMenuItem, Me.AboutXMadHackToolsToolStripMenuItem})
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(74, 34)
-        Me.HelpToolStripMenuItem.Text = "Help"
-        '
-        'AboutImagePatcherToolStripMenuItem
-        '
-        Me.AboutImagePatcherToolStripMenuItem.Name = "AboutImagePatcherToolStripMenuItem"
-        Me.AboutImagePatcherToolStripMenuItem.Size = New System.Drawing.Size(339, 40)
-        Me.AboutImagePatcherToolStripMenuItem.Text = "About ImagePatcher"
-        '
-        'AboutXMadHackToolsToolStripMenuItem
-        '
-        Me.AboutXMadHackToolsToolStripMenuItem.Name = "AboutXMadHackToolsToolStripMenuItem"
-        Me.AboutXMadHackToolsToolStripMenuItem.Size = New System.Drawing.Size(339, 40)
-        Me.AboutXMadHackToolsToolStripMenuItem.Text = "About xMadHackTools"
-        '
-        'SupportUsToolStripMenuItem
-        '
-        Me.SupportUsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContributeToolStripMenuItem, Me.PatreonToolStripMenuItem, Me.PaypalToolStripMenuItem})
-        Me.SupportUsToolStripMenuItem.Name = "SupportUsToolStripMenuItem"
-        Me.SupportUsToolStripMenuItem.Size = New System.Drawing.Size(129, 34)
-        Me.SupportUsToolStripMenuItem.Text = "Contribute"
-        '
-        'ContributeToolStripMenuItem
-        '
-        Me.ContributeToolStripMenuItem.Name = "ContributeToolStripMenuItem"
-        Me.ContributeToolStripMenuItem.Size = New System.Drawing.Size(324, 40)
-        Me.ContributeToolStripMenuItem.Text = "To xMadHack Github"
-        '
-        'PatreonToolStripMenuItem
-        '
-        Me.PatreonToolStripMenuItem.Name = "PatreonToolStripMenuItem"
-        Me.PatreonToolStripMenuItem.Size = New System.Drawing.Size(324, 40)
-        Me.PatreonToolStripMenuItem.Text = "As a Patreon"
-        '
-        'PaypalToolStripMenuItem
-        '
-        Me.PaypalToolStripMenuItem.Name = "PaypalToolStripMenuItem"
-        Me.PaypalToolStripMenuItem.Size = New System.Drawing.Size(324, 40)
-        Me.PaypalToolStripMenuItem.Text = "Donate with Paypal"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(927, 48)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(158, 30)
-        Me.Label1.TabIndex = 16
-        Me.Label1.Text = "Output Options"
-        '
-        'TexPatcher
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(168.0!, 168.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1347, 338)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.chkCloseWhenFinished)
-        Me.Controls.Add(Me.cbPatches)
-        Me.Controls.Add(Me.chkCompressDds)
-        Me.Controls.Add(Me.imfPatched)
-        Me.Controls.Add(Me.imfPatch)
-        Me.Controls.Add(Me.imfSource)
-        Me.Controls.Add(Me.bApplyPatches)
-        Me.Controls.Add(Me.MenuBar)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.MainMenuStrip = Me.MenuBar
-        Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.MaximizeBox = False
-        Me.Name = "TexPatcher"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "[XMH] TexPatcher"
-        Me.MenuBar.ResumeLayout(False)
-        Me.MenuBar.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
-
+        imfPatched = New ImageFileControl()
+        imfPatch = New ImageFileControl()
+        imfSource = New ImageFileControl()
+        bApplyPatches = New Button()
+        chkCompressDds = New CheckBox()
+        cbPatches = New ComboBox()
+        chkCloseWhenFinished = New CheckBox()
+        MenuBar = New MenuStrip()
+        FileToolStripMenuItem = New ToolStripMenuItem()
+        ExitToolStripMenuItem = New ToolStripMenuItem()
+        ToolsToolStripMenuItem = New ToolStripMenuItem()
+        OpenCreatePatchToolToolStripMenuItem = New ToolStripMenuItem()
+        HelpToolStripMenuItem = New ToolStripMenuItem()
+        AboutImagePatcherToolStripMenuItem = New ToolStripMenuItem()
+        ContributeToolStripMenuItem = New ToolStripMenuItem()
+        PatreonToolStripMenuItem = New ToolStripMenuItem()
+        PaypalToolStripMenuItem = New ToolStripMenuItem()
+        Label1 = New Label()
+        MenuBar.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' imfPatched
+        ' 
+        imfPatched.FileFilter = "DDS and PNG Files|*.dds;*.png"
+        imfPatched.ImageFile = "patched.png"
+        imfPatched.ImageFileLabel = "Patched"
+        imfPatched.IsOutput = True
+        imfPatched.Location = New Point(349, 27)
+        imfPatched.Margin = New Padding(4)
+        imfPatched.Name = "imfPatched"
+        imfPatched.Size = New Size(167, 150)
+        imfPatched.TabIndex = 4
+        ' 
+        ' imfPatch
+        ' 
+        imfPatch.FileFilter = "PNG Files|*.png"
+        imfPatch.ImageFile = ""
+        imfPatch.ImageFileLabel = "Patch"
+        imfPatch.IsOutput = False
+        imfPatch.Location = New Point(177, 27)
+        imfPatch.Margin = New Padding(4)
+        imfPatch.Name = "imfPatch"
+        imfPatch.Size = New Size(167, 125)
+        imfPatch.TabIndex = 2
+        ' 
+        ' imfSource
+        ' 
+        imfSource.FileFilter = "DDS and PNG Files|*.dds;*.png"
+        imfSource.ImageFile = ""
+        imfSource.ImageFileLabel = "Source"
+        imfSource.IsOutput = False
+        imfSource.Location = New Point(5, 27)
+        imfSource.Margin = New Padding(4)
+        imfSource.Name = "imfSource"
+        imfSource.Size = New Size(167, 150)
+        imfSource.TabIndex = 1
+        ' 
+        ' bApplyPatches
+        ' 
+        bApplyPatches.Location = New Point(530, 119)
+        bApplyPatches.Margin = New Padding(2)
+        bApplyPatches.Name = "bApplyPatches"
+        bApplyPatches.Size = New Size(197, 33)
+        bApplyPatches.TabIndex = 7
+        bApplyPatches.Text = "Apply Patch"
+        bApplyPatches.UseVisualStyleBackColor = True
+        ' 
+        ' chkCompressDds
+        ' 
+        chkCompressDds.AutoSize = True
+        chkCompressDds.Checked = True
+        chkCompressDds.CheckState = CheckState.Checked
+        chkCompressDds.Location = New Point(530, 63)
+        chkCompressDds.Margin = New Padding(2)
+        chkCompressDds.Name = "chkCompressDds"
+        chkCompressDds.Size = New Size(266, 21)
+        chkCompressDds.TabIndex = 5
+        chkCompressDds.Text = "Compress as BC7 (Only for .dds outputs)"
+        chkCompressDds.UseVisualStyleBackColor = True
+        ' 
+        ' cbPatches
+        ' 
+        cbPatches.DropDownStyle = ComboBoxStyle.DropDownList
+        cbPatches.FormattingEnabled = True
+        cbPatches.Location = New Point(177, 158)
+        cbPatches.Margin = New Padding(2)
+        cbPatches.Name = "cbPatches"
+        cbPatches.Size = New Size(167, 25)
+        cbPatches.TabIndex = 3
+        ' 
+        ' chkCloseWhenFinished
+        ' 
+        chkCloseWhenFinished.AutoSize = True
+        chkCloseWhenFinished.Checked = True
+        chkCloseWhenFinished.CheckState = CheckState.Checked
+        chkCloseWhenFinished.Location = New Point(530, 84)
+        chkCloseWhenFinished.Margin = New Padding(2)
+        chkCloseWhenFinished.Name = "chkCloseWhenFinished"
+        chkCloseWhenFinished.Size = New Size(147, 21)
+        chkCloseWhenFinished.TabIndex = 6
+        chkCloseWhenFinished.Text = "Close When Finished"
+        chkCloseWhenFinished.UseVisualStyleBackColor = True
+        ' 
+        ' MenuBar
+        ' 
+        MenuBar.ImageScalingSize = New Size(24, 24)
+        MenuBar.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem, ToolsToolStripMenuItem, HelpToolStripMenuItem})
+        MenuBar.Location = New Point(0, 0)
+        MenuBar.Name = "MenuBar"
+        MenuBar.Padding = New Padding(5, 2, 0, 2)
+        MenuBar.Size = New Size(770, 25)
+        MenuBar.TabIndex = 15
+        MenuBar.Text = "MenuStrip1"
+        ' 
+        ' FileToolStripMenuItem
+        ' 
+        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ExitToolStripMenuItem})
+        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        FileToolStripMenuItem.Size = New Size(39, 21)
+        FileToolStripMenuItem.Text = "File"
+        ' 
+        ' ExitToolStripMenuItem
+        ' 
+        ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        ExitToolStripMenuItem.Size = New Size(96, 22)
+        ExitToolStripMenuItem.Text = "Exit"
+        ' 
+        ' ToolsToolStripMenuItem
+        ' 
+        ToolsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {OpenCreatePatchToolToolStripMenuItem})
+        ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
+        ToolsToolStripMenuItem.Size = New Size(52, 21)
+        ToolsToolStripMenuItem.Text = "Tools"
+        ' 
+        ' OpenCreatePatchToolToolStripMenuItem
+        ' 
+        OpenCreatePatchToolToolStripMenuItem.Name = "OpenCreatePatchToolToolStripMenuItem"
+        OpenCreatePatchToolToolStripMenuItem.Size = New Size(211, 22)
+        OpenCreatePatchToolToolStripMenuItem.Text = "Open CreatePatch Tool"
+        ' 
+        ' HelpToolStripMenuItem
+        ' 
+        HelpToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {AboutImagePatcherToolStripMenuItem})
+        HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        HelpToolStripMenuItem.Size = New Size(47, 21)
+        HelpToolStripMenuItem.Text = "Help"
+        ' 
+        ' AboutImagePatcherToolStripMenuItem
+        ' 
+        AboutImagePatcherToolStripMenuItem.Name = "AboutImagePatcherToolStripMenuItem"
+        AboutImagePatcherToolStripMenuItem.Size = New Size(195, 22)
+        AboutImagePatcherToolStripMenuItem.Text = "About ImagePatcher"
+        ' 
+        ' ContributeToolStripMenuItem
+        ' 
+        ContributeToolStripMenuItem.Name = "ContributeToolStripMenuItem"
+        ContributeToolStripMenuItem.Size = New Size(32, 19)
+        ' 
+        ' PatreonToolStripMenuItem
+        ' 
+        PatreonToolStripMenuItem.Name = "PatreonToolStripMenuItem"
+        PatreonToolStripMenuItem.Size = New Size(32, 19)
+        ' 
+        ' PaypalToolStripMenuItem
+        ' 
+        PaypalToolStripMenuItem.Name = "PaypalToolStripMenuItem"
+        PaypalToolStripMenuItem.Size = New Size(32, 19)
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Location = New Point(530, 27)
+        Label1.Margin = New Padding(2, 0, 2, 0)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(98, 17)
+        Label1.TabIndex = 16
+        Label1.Text = "Output Options"
+        ' 
+        ' TexPatcher
+        ' 
+        AutoScaleDimensions = New SizeF(96.0F, 96.0F)
+        AutoScaleMode = AutoScaleMode.Dpi
+        ClientSize = New Size(770, 193)
+        Controls.Add(Label1)
+        Controls.Add(chkCloseWhenFinished)
+        Controls.Add(cbPatches)
+        Controls.Add(chkCompressDds)
+        Controls.Add(imfPatched)
+        Controls.Add(imfPatch)
+        Controls.Add(imfSource)
+        Controls.Add(bApplyPatches)
+        Controls.Add(MenuBar)
+        FormBorderStyle = FormBorderStyle.FixedSingle
+        MainMenuStrip = MenuBar
+        Margin = New Padding(2)
+        MaximizeBox = False
+        Name = "TexPatcher"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "[XMH] TexPatcher"
+        MenuBar.ResumeLayout(False)
+        MenuBar.PerformLayout()
+        ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents imfPatched As ImageFileControl
@@ -257,11 +238,10 @@ Partial Class TexPatcher
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AboutXMadHackToolsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SupportUsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenCreatePatchToolToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutImagePatcherToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SupportUsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PatreonToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PaypalToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContributeToolStripMenuItem As ToolStripMenuItem

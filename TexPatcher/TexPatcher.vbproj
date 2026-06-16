@@ -17,9 +17,9 @@
     <Company>XMH Tools</Company>
     <Description>Quickly apply texture patches. Supports PNG and DDS files format.</Description>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/xMadHack/ImageWarp</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/poemdistance/DdsThumbPreview/</PackageProjectUrl>
     <PackageLicenseFile>License.md</PackageLicenseFile>
-    <RepositoryUrl>https://github.com/xMadHack/ImageWarp</RepositoryUrl>
+    <RepositoryUrl>https://github.com/poemdistance/DdsThumbPreview/</RepositoryUrl>
     <PackageOutputPath>..\SharedBin\$(Configuration)\</PackageOutputPath>
   </PropertyGroup>
 

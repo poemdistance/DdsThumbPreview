@@ -466,4 +466,8 @@ Public Class InstallerForm
     Private Sub rbInstallContextMenu_CheckedChanged(sender As Object, e As EventArgs) Handles rbInstallContextMenu.CheckedChanged
 
     End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
 End Class

@@ -11,8 +11,8 @@
     <SelfContained>false</SelfContained>
     <Authors>XMH</Authors>
     <Company>XMH Tools</Company>
-    <PackageProjectUrl>https://github.com/xMadHack/ImageWarp</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/xMadHack/ImageWarp</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/poemdistance/DdsThumbPreview/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/poemdistance/DdsThumbPreview/</RepositoryUrl>
     <PackageLicenseFile>License.md</PackageLicenseFile>
     <Nullable>disable</Nullable>
     <DebugType>none</DebugType>
